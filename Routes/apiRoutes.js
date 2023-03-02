@@ -1,46 +1,49 @@
 const path = require('path');
 const fs = require("fs")
 
-// "POST" request//
+
+// Routing is here //
 
 module.exports = (app) => {
-    app.get("/api/notes", (req, res) => res.json(noteData));
+
+
+ // GET request //
+ 
+ app.get("/api/notes", (req, rep))
+
+// "POST" request//
   
-    app.post("/api/notes", (req, res) => {
-      noteData.push(req.body);
-  
-      for (let i = 0; i < noteData.length; i++) {
-        noteData[i].id = i + 1;
-      }
-  
+router.post('/notes', (req, res) => {
+  console.log(req.body)
+  store
+      .addNote(req.body)
+      .then(note => {
+          res.json(note)
+      })
+      .catch(err => {
+          res.status(500).json(err)
+      })
+})  
+ // notes have been written to the 'db.json' file //
+
       fs.writeFile("./db/db.json", JSON.stringify(noteData), (err) => {
         if (err) throw err;
         console.log("Updated!");
       });
       res.json(true);
-    });
+    };
 
     // "DELETE" request
 
     app.delete("/api/notes/:id", (req, res) => {
-        const id = req.params.id;
-        let index;
-        for (let i in noteData) {
-          if (id === noteData[i].id) {
-            index = i;
-          }
-        }
-        noteData.splice(index, 1);
-        for (let i in noteData) {
-          noteData[i].id = i;
-        }
-        fs.writeFile(
-          path.join(__dirname, "../db/db.json"),
-          JSON.stringify(noteData),
-          (err) => {
-            if (err) throw err;
-          }
-        );
-        res.json(true);
-      });
-    };
+    
+    router.delete('/notes/:id', (req, res) => {
+        store
+            .removeNote(req.params.id)
+            .then(() => res.json({ ok: true }))
+            .catch(err => res.status(500).json(err))
+    })
+    
+  });
+
+  module.exports = router;
