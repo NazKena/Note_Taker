@@ -9,8 +9,18 @@ const htmlRoutes = require('./routes/htmlRoutes.js')
 const readFileAsync =util.promisify(fs.readFile)
 const writeFileAsync=util.promisify(fs.WriireFile)
 
-// creating Port and setting up server //
+// Here I have set up the Port and express app //
 
+const app = express();
 const PORT = process.env.PORT || 3001;
 
 
+// The link to the assets //
+
+app.use(express.static('public'));
+
+// When the app first loads, it should start with the index.html //
+
+app.get("/", function (req,res){
+    res.sendFile(path.join(__dirname, "/public/index.html"));
+});
