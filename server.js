@@ -16,9 +16,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-// The link to the assets //
+// The link to the routes //
 
 app.use(express.static('public'));
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
 
 // Start App
