@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-- [Description] (#description)
+- [Description](#description)
 - [Technologies](#technologies)
 - [Installation and Usage](#installation-and-usage)
-- [Screenshot] (#screenshot)
+- [Screenshot](#screenshot)
 - [Heroku Link](#heroku-link)
 
 ## Description 
