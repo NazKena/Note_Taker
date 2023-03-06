@@ -10,7 +10,7 @@
 
 ## Description 
 
-This is an application that will work by allowing a small buisness owner to write and save notes so that they are able to keep track of the tasks they need to complete
+This is an application that will work by allowing a small buisness owner to write and save notes so that they are able to keep track of the tasks they need to complete.
 
 ## Technologies
 
