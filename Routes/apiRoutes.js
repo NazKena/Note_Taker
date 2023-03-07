@@ -5,7 +5,7 @@ const router = express.Router ()
 
   // GET request //
 
-  router.get("/notes", (req, res) => {
+  router.get("/api/notes", (req, res) => {
     fs.readFile("db/db.json","utf-8",(err,data)=>{
         if (err){
             console.log(err) 
@@ -17,7 +17,7 @@ const router = express.Router ()
 
   // "POST" request//
 
-  router.post("/notes", (req, res) => {
+  router.post("/api/notes", (req, res) => {
     const notes = JSON.parse(fs.readFileSync("./db/db.json"));
     const newNotes = req.body;
     newNotes.id = uuid.v4();
