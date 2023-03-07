@@ -1,6 +1,5 @@
 // Here are the dependencies and Routers //
 const express = require('express');
-const router = express.Router()
 const apiRoutes = require('./routes/apiRoutes.js');
 const htmlRoutes = require('./routes/htmlRoutes.js')
 
