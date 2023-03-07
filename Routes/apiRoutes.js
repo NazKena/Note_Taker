@@ -1,34 +1,29 @@
 const path = require("path");
 const fs = require("fs");
 
-// Routing is here //
-
-module.exports = (app) => {
   // GET request //
 
-  app.get("/api/notes", (req, rep));
+  router.get("/notes", (req, res) => {
+    fs.readFile("db/db.json","utf-8",(err,data)=>{
+        if (err){
+            console.log(err) 
+        } else{
+            return res.json(JSON.parse(data))
+        }
+    })
+});
 
   // "POST" request//
 
   router.post("/notes", (req, res) => {
-    console.log(req.body);
-    store
-      .addNote(req.body)
-      .then((note) => {
-        res.json(note);
-      })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-  });
-  // notes have been written to the 'db.json' file //
+    const notes = JSON.parse(fs.readFileSync("./db/db.json"));
+    const newNotes = req.body;
+    newNotes.id = uuid.v4();
+    notes.push(newNotes);
+    fs.writeFileSync("./db/db.json", JSON.stringify(notes))
+    res.json(notes);
+});
 
-  fs.writeFile("./db/db.json", JSON.stringify(noteData), (err) => {
-    if (err) throw err;
-    console.log("Updated!");
-  });
-  res.json(true);
-};
 
 // "DELETE" request
 
