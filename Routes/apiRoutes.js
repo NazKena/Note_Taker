@@ -1,5 +1,7 @@
+const express = require ("express")
 const path = require("path");
 const fs = require("fs");
+const router = express.Router ()
 
   // GET request //
 
@@ -27,7 +29,7 @@ const fs = require("fs");
 
 // "DELETE" request
 
-app.delete("/api/notes/:id", (req, res) => {
+router.delete("/api/notes/:id", (req, res) => {
   const { id } = req.params;
   let currentNotes = JSON.parse(currentNotesRaw);
   currentNotes = currentNotes.filter((note) => note.id !== id);
