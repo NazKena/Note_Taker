@@ -1,7 +1,7 @@
 // Here are the dependencies and Routers //
 const express = require('express');
-const apiRoutes = require('./routes/apiRoutes.js');
-const htmlRoutes = require('./routes/htmlRoutes.js')
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes')
 
 // Here I have set up the Port and express app //
 const PORT = process.env.PORT || 3001;
