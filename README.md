@@ -26,4 +26,8 @@ When the applicatiion is opened, then the user will see a page that links to a n
 
 ## Screenshot
 
+![Image](./Images/Screenshot%202023-03-07%20at%2019.52.44.png)
+
 ## Heroku Link
+
+Click this link to be taken to the deployed Heroku page: [Deployed Link](https://herokus-note-taker.herokuapp.com/)

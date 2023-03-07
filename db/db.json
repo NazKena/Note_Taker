@@ -2,5 +2,19 @@
     {
         "title":"Test Title",
         "text":"Test text"
+    },
+    {   "id":1,
+        "title":"Reviews",
+        "text":"Here are my review notes"
+    },
+    {
+        "id":2,
+        "title":"Watch List",
+        "text":"Here is the list of shows I want to watch"
+    },
+    {
+        "id":3,
+        "title":"Travel List",
+        "text":"Here is the list of countries I want to travel to"
     }
 ]
