@@ -1,11 +1,12 @@
 const express = require ("express")
+const router = express.Router ()
 const path = require("path");
 const fs = require("fs");
-const router = express.Router ()
+const uuid = require ("uuid");
 
   // GET request //
 
-  router.get("/api/notes", (req, res) => {
+  router.get("/notes", (req, res) => {
     fs.readFile("db/db.json","utf-8",(err,data)=>{
         if (err){
             console.log(err) 
@@ -17,7 +18,7 @@ const router = express.Router ()
 
   // "POST" request//
 
-  router.post("/api/notes", (req, res) => {
+  router.post("/notes", (req, res) => {
     const notes = JSON.parse(fs.readFileSync("./db/db.json"));
     const newNotes = req.body;
     newNotes.id = uuid.v4();
@@ -29,15 +30,12 @@ const router = express.Router ()
 
 // "DELETE" request
 
-router.delete("/api/notes/:id", (req, res) => {
-  const { id } = req.params;
-  let currentNotes = JSON.parse(currentNotesRaw);
-  currentNotes = currentNotes.filter((note) => note.id !== id);
-  fs.writeFile("./db/db.json", JSON.stringify(currentNotes), (err) =>
-    err ? console.error(err) : console.log(`Note has been deleted`)
-  );
-  res.send(id);
-  readDatabase();
-});
-
+router.delete("/notes/:id", (req, res) => {
+  const notes = JSON.parse(fs.readFileSync("./db/db.json"));
+  const delNotes = notes.filter((rmvNote) => rmvNote.id !== req.params.id);
+  delNotes.id = uuid.v4();
+  fs.writeFileSync("./db/db.json", JSON.stringify(delNotes))
+  res.json(delNote);
+}
+)
 module.exports = router;
